@@ -12,17 +12,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css"
         integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
     <!-- light.gg tooltip integration -->
-    <script>window['lggTT'] = { darkMode: true }</script>
+    <script>window['lggTT'] = { darkMode: true, recolorLinks: false }</script>
+    <link rel="stylesheet" href="main.css">
     <script type="text/javascript" src="https://light.gg/tooltips.js" async></script>
     <title>D2 Fashion</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark mb-2">
         <a class="navbar-brand" href="#">Destiny 2 Fashion</a>
     </nav>
     <div class="container">
-        <h1>Hello from Fashion!</h1>
         <nav>
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                 <a class="nav-link active" id="hunter-tab" data-toggle="tab" href="#hunter" role="tab"
@@ -34,21 +34,15 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="hunter" role="tabpanel" aria-labelledby="hunter-tab">
-                What do you mean spectral isn't fair?
-            </div>
-            <div class="tab-pane fade" id="warlock" role="tabpanel" aria-labelledby="warlock-tab">
-                We are oppressed brother.
-            </div>
-            <div class="tab-pane fade" id="titan" role="tabpanel" aria-labelledby="titan-tab">
-                Less dumb than people think.
-            </div>
+            <div class="tab-pane fade show active" id="hunter" role="tabpanel" aria-labelledby="hunter-tab"></div>
+            <div class="tab-pane fade" id="warlock" role="tabpanel" aria-labelledby="warlock-tab"></div>
+            <div class="tab-pane fade" id="titan" role="tabpanel" aria-labelledby="titan-tab"></div>
         </div>
     </div>
 
     <script src="fashion.js" type="module"></script>
     <script src="index.js" type="module"></script>
-    
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
