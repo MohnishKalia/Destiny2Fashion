@@ -4,35 +4,21 @@ function kebabify(string) {
     return string.replace(/\s/g, '-');
 }
 
-class ArmorComponent extends HTMLLIElement {
-    constructor() {
-        self = super();
-
-        const h5 = document.createElement('h5');
-        h5.className = 'mb-1';
-        h5.textContent = this.getAttribute('armor-piece');
-
-        const laptopDiv = document.createElement('div');
-        laptopDiv.className = 'd-none d-md-block';
-        laptopDiv.innerHTML = `
-            Armor: <a href="${this.getAttribute('itemUrl')}">${this.getAttribute('itemName')}</a> | 
-            Shader: <a href="${this.getAttribute('shaderUrl')}">${this.getAttribute('shaderName')}</a>
-        `;
-
-        const mobileDiv = document.createElement('div');
-        mobileDiv.className = 'd-md-none';
-        mobileDiv.innerHTML = `
-            <p>Armor: <a href="${this.getAttribute('itemUrl')}">${this.getAttribute('itemName')}</a></p>
-            <p>Shader: <a href="${this.getAttribute('shaderUrl')}">${this.getAttribute('shaderName')}</a></p>
-        `;
-
-        self.appendChild(h5);
-        self.appendChild(mobileDiv);
-        self.appendChild(laptopDiv);
-    }
+function getArmorComponent(armorPiece, itemUrl, itemName, shaderUrl, shaderName){
+    return `
+    <li class="list-group-item">
+        <h5 class="mb-1">${armorPiece}</h5>
+        <div class="d-none d-md-block">
+            Armor: <a href="${itemUrl}">${itemName}</a> | 
+            Shader: <a href="${shaderUrl}">${shaderName}</a>
+        </div>
+        <div class="d-md-none">
+            <p>Armor: <a href="${itemUrl}">${itemName}</a></p>
+            <p>Shader: <a href="${shaderUrl}">${shaderName}</a></p>
+        </div>
+    </li>
+    `;
 }
-
-customElements.define('armor-component', ArmorComponent, { extends: 'li' });
 
 for (const character of Object.keys(fashion)) {
     const charElt = document.getElementById(character);
@@ -68,46 +54,36 @@ for (const character of Object.keys(fashion)) {
             paneDiv.setAttribute('role', 'tabpanel');
             paneDiv.innerHTML = `
             <ul class="list-group mb-2">
-                <li is="armor-component"
-                    class="list-group-item" 
-                    armor-piece="Helmet"
-                    itemUrl="${currentLoadout.helmet.itemUrl}"
-                    itemName="${currentLoadout.helmet.itemName}"
-                    shaderUrl="${currentLoadout.helmet.shaderUrl}"
-                    shaderName="${currentLoadout.helmet.shaderName}"
-                ></li>
-                <li is="armor-component"
-                    class="list-group-item" 
-                    armor-piece="Gauntlets"
-                    itemUrl="${currentLoadout.gauntlets.itemUrl}"
-                    itemName="${currentLoadout.gauntlets.itemName}"
-                    shaderUrl="${currentLoadout.gauntlets.shaderUrl}"
-                    shaderName="${currentLoadout.gauntlets.shaderName}"
-                ></li>
-                <li is="armor-component"
-                    class="list-group-item" 
-                    armor-piece="Chest"
-                    itemUrl="${currentLoadout.chest.itemUrl}"
-                    itemName="${currentLoadout.chest.itemName}"
-                    shaderUrl="${currentLoadout.chest.shaderUrl}"
-                    shaderName="${currentLoadout.chest.shaderName}"
-                ></li>
-                <li is="armor-component"
-                    class="list-group-item" 
-                    armor-piece="Legs"
-                    itemUrl="${currentLoadout.legs.itemUrl}"
-                    itemName="${currentLoadout.legs.itemName}"
-                    shaderUrl="${currentLoadout.legs.shaderUrl}"
-                    shaderName="${currentLoadout.legs.shaderName}"
-                ></li>
-                <li is="armor-component"
-                    class="list-group-item" 
-                    armor-piece="Class Item"
-                    itemUrl="${currentLoadout.classItem.itemUrl}"
-                    itemName="${currentLoadout.classItem.itemName}"
-                    shaderUrl="${currentLoadout.classItem.shaderUrl}"
-                    shaderName="${currentLoadout.classItem.shaderName}"
-                ></li>
+                ${getArmorComponent('Helmet', 
+                currentLoadout.helmet.itemUrl, 
+                currentLoadout.helmet.itemName, 
+                currentLoadout.helmet.shaderUrl, 
+                currentLoadout.helmet.shaderName
+                )}
+                ${getArmorComponent('Gauntlets', 
+                currentLoadout.gauntlets.itemUrl, 
+                currentLoadout.gauntlets.itemName, 
+                currentLoadout.gauntlets.shaderUrl, 
+                currentLoadout.gauntlets.shaderName
+                )}
+                ${getArmorComponent('Chest', 
+                currentLoadout.chest.itemUrl, 
+                currentLoadout.chest.itemName, 
+                currentLoadout.chest.shaderUrl, 
+                currentLoadout.chest.shaderName
+                )}
+                ${getArmorComponent('Legs', 
+                currentLoadout.legs.itemUrl, 
+                currentLoadout.legs.itemName, 
+                currentLoadout.legs.shaderUrl, 
+                currentLoadout.legs.shaderName
+                )}
+                ${getArmorComponent('Class Item', 
+                currentLoadout.classItem.itemUrl, 
+                currentLoadout.classItem.itemName, 
+                currentLoadout.classItem.shaderUrl, 
+                currentLoadout.classItem.shaderName
+                )}
             </ul>
             `;
             div.appendChild(paneDiv);
