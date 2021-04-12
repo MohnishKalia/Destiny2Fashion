@@ -20,6 +20,17 @@ function getArmorComponent(armorPiece, itemUrl, itemName, shaderUrl, shaderName)
     `;
 }
 
+function getLoadoutMedia(mediaFile) {
+    return mediaFile ? `
+    <li class="list-group-item">
+        <h5 class="mb-1">Loadout Preview</h5>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video autoplay loop muted playsinline class="embed-responsive-item" src="${mediaFile}"></video>
+        </div>
+    </li>
+    ` : '';
+}
+
 for (const character of Object.keys(fashion)) {
     const charElt = document.getElementById(character);
 
@@ -49,19 +60,21 @@ for (const character of Object.keys(fashion)) {
             navDiv.appendChild(a);
 
             const componentBindings = [['Helmet', 'helmet'], ['Gauntlets', 'gauntlets'], ['Chest', 'chest'], ['Legs', 'legs'], ['Class Item', 'classItem']];
-            
+
             const paneDiv = document.createElement('div');
             paneDiv.className = 'tab-pane fade';
             paneDiv.id = `${character}-${kebabify(loadout)}`;
             paneDiv.setAttribute('role', 'tabpanel');
             paneDiv.innerHTML = `
             <ul class="list-group mb-2">
-                ${componentBindings.reduce((prev, val) => prev + 
-                getArmorComponent(val[0],
-                    currentLoadout[val[1]].itemUrl,
-                    currentLoadout[val[1]].itemName,
-                    currentLoadout[val[1]].shaderUrl,
-                    currentLoadout[val[1]].shaderName), '')}
+                ${componentBindings.reduce((prev, val) => {
+                    return prev + getArmorComponent(val[0],
+                        currentLoadout[val[1]].itemUrl,
+                        currentLoadout[val[1]].itemName,
+                        currentLoadout[val[1]].shaderUrl,
+                        currentLoadout[val[1]].shaderName)
+                }, '')}
+                ${getLoadoutMedia(currentLoadout.mediaFile)}
             </ul>
             `;
             div.appendChild(paneDiv);
