@@ -4,7 +4,7 @@ function kebabify(string) {
     return string.replace(/\s/g, '-');
 }
 
-function getArmorComponent(armorPiece, itemUrl, itemName, shaderUrl, shaderName){
+function getArmorComponent(armorPiece, itemUrl, itemName, shaderUrl, shaderName) {
     return `
     <li class="list-group-item">
         <h5 class="mb-1">${armorPiece}</h5>
@@ -48,42 +48,20 @@ for (const character of Object.keys(fashion)) {
             a.textContent = loadout;
             navDiv.appendChild(a);
 
+            const componentBindings = [['Helmet', 'helmet'], ['Gauntlets', 'gauntlets'], ['Chest', 'chest'], ['Legs', 'legs'], ['Class Item', 'classItem']];
+            
             const paneDiv = document.createElement('div');
             paneDiv.className = 'tab-pane fade';
             paneDiv.id = `${character}-${kebabify(loadout)}`;
             paneDiv.setAttribute('role', 'tabpanel');
             paneDiv.innerHTML = `
             <ul class="list-group mb-2">
-                ${getArmorComponent('Helmet', 
-                currentLoadout.helmet.itemUrl, 
-                currentLoadout.helmet.itemName, 
-                currentLoadout.helmet.shaderUrl, 
-                currentLoadout.helmet.shaderName
-                )}
-                ${getArmorComponent('Gauntlets', 
-                currentLoadout.gauntlets.itemUrl, 
-                currentLoadout.gauntlets.itemName, 
-                currentLoadout.gauntlets.shaderUrl, 
-                currentLoadout.gauntlets.shaderName
-                )}
-                ${getArmorComponent('Chest', 
-                currentLoadout.chest.itemUrl, 
-                currentLoadout.chest.itemName, 
-                currentLoadout.chest.shaderUrl, 
-                currentLoadout.chest.shaderName
-                )}
-                ${getArmorComponent('Legs', 
-                currentLoadout.legs.itemUrl, 
-                currentLoadout.legs.itemName, 
-                currentLoadout.legs.shaderUrl, 
-                currentLoadout.legs.shaderName
-                )}
-                ${getArmorComponent('Class Item', 
-                currentLoadout.classItem.itemUrl, 
-                currentLoadout.classItem.itemName, 
-                currentLoadout.classItem.shaderUrl, 
-                currentLoadout.classItem.shaderName
-                )}
+                ${componentBindings.reduce((prev, val) => prev + 
+                getArmorComponent(val[0],
+                    currentLoadout[val[1]].itemUrl,
+                    currentLoadout[val[1]].itemName,
+                    currentLoadout[val[1]].shaderUrl,
+                    currentLoadout[val[1]].shaderName), '')}
             </ul>
             `;
             div.appendChild(paneDiv);
