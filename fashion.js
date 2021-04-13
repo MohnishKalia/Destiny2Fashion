@@ -24,6 +24,7 @@ const itemsToUrls = {
 };
 
 const shadersToUrls = {
+    'None': '#',
     'Ruin Wreath': 'https://www.light.gg/db/items/2590008185/ruin-wreath/',
     'Satou Tribe': 'https://www.light.gg/db/items/3650581588/satou-tribe/',
     'Metro Shift': 'https://www.light.gg/db/items/3205869476/metro-shift/',
@@ -96,7 +97,7 @@ const fashion = {
                 exotics: [
                     {
                         itemName: 'Mask of Bakris',
-                        shaderName: 'Valkyrie Zero',
+                        shaderName: 'None',
                     },
                     {
                         itemName: 'Hrafnagud',
