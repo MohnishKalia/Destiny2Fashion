@@ -1,25 +1,63 @@
+// @ts-check
+
 import { fashion } from './fashion.js';
 
+/**
+ * @param {string} string
+ */
 function kebabify(string) {
     return string.replace(/\s/g, '-');
 }
 
-function getArmorComponent(armorPiece, itemUrl, itemName, shaderUrl, shaderName) {
+/**
+ * @param {import("./fashion.js").Component} component
+ */
+function getComponentDisplay(component) {
+    return `
+    <div class="col py-2 py-md-0">
+        <p>Armor: <a href="${component.itemUrl}">${component.itemName}</a></p>
+        <p>Shader: <a href="${component.shaderUrl}">${component.shaderName}</a></p>
+    </div>
+    `;
+}
+
+/**
+ * @param {string} armorPiece
+ * @param {import("./fashion.js").ComponentOptions} componentOptions
+ */
+function getArmorComponent(armorPiece, componentOptions) {
+    const hasExotics = componentOptions.exotics && componentOptions.exotics.length >= 0;
+
+    let innerHTML = getComponentDisplay(componentOptions.base);
+
+    if (hasExotics) {
+        for (const component of componentOptions.exotics) {
+            innerHTML += getComponentDisplay(component);
+        }
+    }
+
     return `
     <li class="list-group-item">
         <h5 class="mb-1">${armorPiece}</h5>
-        <div class="d-none d-md-block">
-            Armor: <a href="${itemUrl}">${itemName}</a> | 
-            Shader: <a href="${shaderUrl}">${shaderName}</a>
-        </div>
-        <div class="d-md-none">
-            <p>Armor: <a href="${itemUrl}">${itemName}</a></p>
-            <p>Shader: <a href="${shaderUrl}">${shaderName}</a></p>
+        <div class="container">
+            <div class="d-none d-md-block">
+                <div class="row row-cols-3">
+                    ${innerHTML}
+                </div>
+            </div>
+            <div class="d-md-none">
+                <div class="row row-cols-1">
+                    ${innerHTML}
+                </div>
+            </div>
         </div>
     </li>
     `;
 }
 
+/**
+ * @param {string} mediaFile
+ */
 function getLoadoutMedia(mediaFile) {
     return mediaFile ? `
     <li class="list-group-item">
@@ -36,7 +74,7 @@ for (const character of Object.keys(fashion)) {
 
     if (Object.keys(fashion[character]).length) {
         const nav = document.createElement('nav');
-        nav.classList = 'mb-2';
+        nav.className = 'mb-2';
 
         const navDiv = document.createElement('div');
         navDiv.id = `${character}-nav-tab`;
@@ -48,6 +86,7 @@ for (const character of Object.keys(fashion)) {
         div.id = `${character}-nav-tabContent`;
 
         for (const loadout of Object.keys(fashion[character])) {
+            /** @type {import('./fashion.js').Loadout} */
             const currentLoadout = fashion[character][loadout];
 
             const a = document.createElement('a');
@@ -59,6 +98,7 @@ for (const character of Object.keys(fashion)) {
             a.textContent = loadout;
             navDiv.appendChild(a);
 
+            /** @type {[string, keyof Omit<import('./fashion.js').Loadout, 'mediaFile'>][]} */
             const componentBindings = [['Helmet', 'helmet'], ['Gauntlets', 'gauntlets'], ['Chest', 'chest'], ['Legs', 'legs'], ['Class Item', 'classItem']];
 
             const paneDiv = document.createElement('div');
@@ -67,13 +107,7 @@ for (const character of Object.keys(fashion)) {
             paneDiv.setAttribute('role', 'tabpanel');
             paneDiv.innerHTML = `
             <ul class="list-group mb-2">
-                ${componentBindings.reduce((prev, val) => {
-                    return prev + getArmorComponent(val[0],
-                        currentLoadout[val[1]].itemUrl,
-                        currentLoadout[val[1]].itemName,
-                        currentLoadout[val[1]].shaderUrl,
-                        currentLoadout[val[1]].shaderName)
-                }, '')}
+                ${componentBindings.reduce((prev, val) => prev + getArmorComponent(val[0], currentLoadout[val[1]]), '')}
                 ${getLoadoutMedia(currentLoadout.mediaFile)}
             </ul>
             `;

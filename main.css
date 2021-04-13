@@ -1,3 +1,16 @@
 p {
     margin: 0;
 }
+/* 
+@media (max-width: 767.98px) { 
+    .base-item {
+        border-bottom: 1px solid #dee2e6;
+    }
+}
+
+@media (min-width: 768px) { 
+    .base-item {
+        border-right: 1px solid #dee2e6;
+    }
+} 
+*/
