@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
@@ -19,27 +19,42 @@
     <title>D2 Fashion</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark mb-2">
-        <a class="navbar-brand" href="#">Destiny 2 Fashion</a>
-    </nav>
-    <div class="container">
-        <nav>
-            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-link active" id="hunter-tab" data-toggle="tab" href="#hunter" role="tab"
-                    aria-controls="hunter" aria-selected="true">Hunter</a>
-                <a class="nav-link" id="warlock-tab" data-toggle="tab" href="#warlock" role="tab"
-                    aria-controls="warlock" aria-selected="false">Warlock</a>
-                <a class="nav-link" id="titan-tab" data-toggle="tab" href="#titan" role="tab" aria-controls="titan"
-                    aria-selected="false">Titan</a>
+<body class="d-flex flex-column h-100">
+    <header>
+        <nav class="navbar sticky-top navbar-dark bg-dark mb-2">
+            <div class="container">
+                <a class="navbar-brand" href="#">Destiny 2 Fashion</a>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="hunter" role="tabpanel" aria-labelledby="hunter-tab"></div>
-            <div class="tab-pane fade" id="warlock" role="tabpanel" aria-labelledby="warlock-tab"></div>
-            <div class="tab-pane fade" id="titan" role="tabpanel" aria-labelledby="titan-tab"></div>
+    </header>
+    <main class="flex-shrink-0" role="main">
+        <div class="container">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-link active" id="hunter-tab" data-toggle="tab" href="#hunter" role="tab"
+                        aria-controls="hunter" aria-selected="true">Hunter</a>
+                    <a class="nav-link" id="warlock-tab" data-toggle="tab" href="#warlock" role="tab"
+                        aria-controls="warlock" aria-selected="false">Warlock</a>
+                    <a class="nav-link" id="titan-tab" data-toggle="tab" href="#titan" role="tab" aria-controls="titan"
+                        aria-selected="false">Titan</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="hunter" role="tabpanel" aria-labelledby="hunter-tab"></div>
+                <div class="tab-pane fade" id="warlock" role="tabpanel" aria-labelledby="warlock-tab"></div>
+                <div class="tab-pane fade" id="titan" role="tabpanel" aria-labelledby="titan-tab"></div>
+            </div>
         </div>
-    </div>
+    </main>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">Fashion Rules:</span>
+            <ol>
+                <li><span class="text-muted">No more than 2 armor pieces from the same set.</span></li>
+                <li><span class="text-muted">No more than 2 of the same shader.</span></li>
+            </ol>
+        </div>
+    </footer>
 
     <script src="fashion.js" type="module"></script>
     <script src="index.js" type="module"></script>

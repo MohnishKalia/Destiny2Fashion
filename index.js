@@ -25,7 +25,7 @@ function getLoadoutMedia(mediaFile) {
     <li class="list-group-item">
         <h5 class="mb-1">Loadout Preview</h5>
         <div class="embed-responsive embed-responsive-16by9">
-            <video autoplay loop muted playsinline class="embed-responsive-item" src="${mediaFile}"></video>
+            <video autoplay loop muted playsinline class="embed-responsive-item" src="${mediaFile}" alt="${mediaFile}"></video>
         </div>
     </li>
     ` : '';
