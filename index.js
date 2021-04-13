@@ -11,10 +11,11 @@ function kebabify(string) {
 
 /**
  * @param {import("./fashion.js").Component} component
+ * @param {string} className
  */
-function getComponentDisplay(component) {
+function getComponentDisplay(component, className = '') {
     return `
-    <div class="col py-2 py-md-0">
+    <div class="col py-2 ${className}">
         <p>Armor: <a href="${component.itemUrl}">${component.itemName}</a></p>
         <p>Shader: <a href="${component.shaderUrl}">${component.shaderName}</a></p>
     </div>
@@ -39,6 +40,7 @@ function getArmorComponent(armorPiece, componentOptions) {
     return `
     <li class="list-group-item">
         <h5 class="mb-1">${armorPiece}</h5>
+        ${hasExotics ? '<p class="text-muted">First armor piece is the base value.</p>' : ''}
         <div class="container">
             <div class="d-none d-md-block">
                 <div class="row row-cols-3">
