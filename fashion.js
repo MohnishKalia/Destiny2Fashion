@@ -24,7 +24,7 @@ const itemsToUrls = {
 };
 
 const shadersToUrls = {
-    'None': '#',
+    'None': 'javascript:void(0);',
     'Ruin Wreath': 'https://www.light.gg/db/items/2590008185/ruin-wreath/',
     'Satou Tribe': 'https://www.light.gg/db/items/3650581588/satou-tribe/',
     'Metro Shift': 'https://www.light.gg/db/items/3205869476/metro-shift/',

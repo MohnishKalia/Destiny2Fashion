@@ -1,6 +1,17 @@
 p {
     margin: 0;
 }
+
+#hunter > .tab-content a,#warlock > .tab-content a,#titan > .tab-content a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+#hunter > .tab-content a:hover,#warlock > .tab-content a:hover,#titan > .tab-content a:hover {
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+
 /* 
 @media (max-width: 767.98px) { 
     .base-item {
