@@ -11,18 +11,24 @@ function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const light = axios.create({ baseURL: 'https://www.light.gg/db/category' });
+const light = axios.create({ baseURL: 'https://www.light.gg/db/all' });
 const dataSources = {
-    'Armor Pieces': '/20?f=-43',
-    'Armor Ornaments': '/-7?f=9(19;39;41;42;43;44;55;57;58)|10(transmat%20effect)|10(ornament),10(armor%20ornament;warlock%20ornament;hunter%20ornament;titan%20ornament)|9(41),,,10(transmat%20effect;ornament;armor%20ornament;warlock%20ornament;hunter%20ornament;titan%20ornament;armor%20ornament;warlock%20ornament;hunter%20ornament;titan%20ornament;transmat%20effect;ornament;transmat%20effect;ornament;transmat%20effect;ornament)',
-    // 'Shaders' : ''
+    'Armor Pieces': '/?f=3,-41,-42,-43',
+    'Armor Ornaments': '/?f=9(1742617626),-41,-42,-43',
+    'Shaders' : '/?f=9(41),-41,-42,-43',
 }
 
 async function getItems() {
     const itemsToUrls = new Map();
+    const shadersToUrls = new Map();
     await getDataSource('Armor Pieces', itemsToUrls, 78);
     await getDataSource('Armor Ornaments', itemsToUrls, 8);
-    const fileContent = `export const itemsToUrls = ${JSON.stringify(Object.fromEntries(itemsToUrls), null, 4)};`;
+    await getDataSource('Shaders', shadersToUrls, 7);
+    const fileContent = `
+    export const itemsToUrls = ${JSON.stringify(Object.fromEntries(itemsToUrls), null, 4)};
+
+    export const shadersToUrls = ${JSON.stringify(Object.fromEntries(shadersToUrls), null, 4)};
+    `;
     await fs.writeFile('../data.js', fileContent);
 }
 
