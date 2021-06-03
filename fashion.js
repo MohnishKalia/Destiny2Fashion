@@ -1,27 +1,28 @@
 // @ts-check
+import { itemsToUrls } from './data';
 
-const itemsToUrls = {
-    'Virtuous Mask': 'https://www.light.gg/db/items/90191153/virtuous-mask/',
-    'Canis Luna Grips': 'https://www.light.gg/db/items/1633261020/canis-luna-grips/',
-    'Intrepid Discovery Vest': 'https://www.light.gg/db/items/3254010962/intrepid-discovery-vest/',
-    'Luxe Riders': 'https://www.light.gg/db/items/952534832/luxe-riders/',
-    'Steeplechase Cloak': 'https://www.light.gg/db/items/3675842925/steeplechase-cloak/',
-    'Solstice Mask (Magnificent)': 'https://www.light.gg/db/items/3742741341/solstice-mask-magnificent/',
-    'Cunning Rivalry Cloak': 'https://www.light.gg/db/items/195422190/cunning-rivalry-cloak/',
-    'Virtuous Helm': 'https://www.light.gg/db/items/3324052357/virtuous-helm/',
-    'Siegebreak Gauntlets': 'https://www.light.gg/db/items/377715970/siegebreak-gauntlets/',
-    'Phoenix Battle Ornament': 'https://www.light.gg/db/items/3440657549/phoenix-battle-ornament/',
-    'Siegebreak Greaves': 'https://www.light.gg/db/items/2463438524/siegebreak-greaves/',
-    'Virtuous Mark': 'https://www.light.gg/db/items/3173709985/virtuous-mark/',
-    'Intrepid Inquiry Hood': 'https://www.light.gg/db/items/4071506690/intrepid-inquiry-hood/',
-    "Legacy's Oath Gloves": 'https://www.light.gg/db/items/79460168/legacys-oath-gloves/',
-    'Celestial Robes': 'https://www.light.gg/db/items/3721737629/celestial-robes/',
-    'Celestial Boots': 'https://www.light.gg/db/items/2889842501/celestial-boots/',
-    'Forbidden Visage Bond': 'https://www.light.gg/db/items/1838291479/forbidden-visage-bond/',
-    'Hrafnagud': 'https://www.light.gg/db/items/2549526496/hrafnagud/',
-    'Mask of Bakris': 'https://www.light.gg/db/items/1619425569/mask-of-bakris/',
-    'Orpheus Rig': 'https://www.light.gg/db/items/193869523/orpheus-rig/',
-};
+// const itemsToUrls = {
+//     'Virtuous Mask': 'https://www.light.gg/db/items/90191153/virtuous-mask/',
+//     'Canis Luna Grips': 'https://www.light.gg/db/items/1633261020/canis-luna-grips/',
+//     'Intrepid Discovery Vest': 'https://www.light.gg/db/items/3254010962/intrepid-discovery-vest/',
+//     'Luxe Riders': 'https://www.light.gg/db/items/952534832/luxe-riders/',
+//     'Steeplechase Cloak': 'https://www.light.gg/db/items/3675842925/steeplechase-cloak/',
+//     'Solstice Mask (Magnificent)': 'https://www.light.gg/db/items/3742741341/solstice-mask-magnificent/',
+//     'Cunning Rivalry Cloak': 'https://www.light.gg/db/items/195422190/cunning-rivalry-cloak/',
+//     'Virtuous Helm': 'https://www.light.gg/db/items/3324052357/virtuous-helm/',
+//     'Siegebreak Gauntlets': 'https://www.light.gg/db/items/377715970/siegebreak-gauntlets/',
+//     'Phoenix Battle Ornament': 'https://www.light.gg/db/items/3440657549/phoenix-battle-ornament/',
+//     'Siegebreak Greaves': 'https://www.light.gg/db/items/2463438524/siegebreak-greaves/',
+//     'Virtuous Mark': 'https://www.light.gg/db/items/3173709985/virtuous-mark/',
+//     'Intrepid Inquiry Hood': 'https://www.light.gg/db/items/4071506690/intrepid-inquiry-hood/',
+//     "Legacy's Oath Gloves": 'https://www.light.gg/db/items/79460168/legacys-oath-gloves/',
+//     'Celestial Robes': 'https://www.light.gg/db/items/3721737629/celestial-robes/',
+//     'Celestial Boots': 'https://www.light.gg/db/items/2889842501/celestial-boots/',
+//     'Forbidden Visage Bond': 'https://www.light.gg/db/items/1838291479/forbidden-visage-bond/',
+//     'Hrafnagud': 'https://www.light.gg/db/items/2549526496/hrafnagud/',
+//     'Mask of Bakris': 'https://www.light.gg/db/items/1619425569/mask-of-bakris/',
+//     'Orpheus Rig': 'https://www.light.gg/db/items/193869523/orpheus-rig/',
+// };
 
 const shadersToUrls = {
     'None': 'javascript:void(0);',
