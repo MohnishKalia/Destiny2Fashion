@@ -1,5 +1,5 @@
 // @ts-check
-import { itemsToUrls, shadersToUrls } from './data';
+import { itemsToUrls, shadersToUrls } from './data.js';
 
 /**
  * A fashion component, with item url and shader url.
