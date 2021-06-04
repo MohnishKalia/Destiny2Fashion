@@ -15,6 +15,7 @@ const light = axios.create({ baseURL: 'https://www.light.gg/db/all' });
 const dataSources = {
     'Armor Pieces': '/?f=3,-41,-42,-43',
     'Armor Ornaments': '/?f=9(1742617626),-41,-42,-43',
+    'Universal Armor Ornaments': '/?f=10(Titan%20Universal%20Ornament;Hunter%20Universal%20Ornament;Warlock%20Universal%20Ornament),-41,-42,-43',
     'Shaders' : '/?f=9(41),-41,-42,-43',
 }
 
@@ -23,6 +24,7 @@ async function getItems() {
     const shadersToUrls = new Map();
     await getDataSource('Armor Pieces', itemsToUrls, 78);
     await getDataSource('Armor Ornaments', itemsToUrls, 8);
+    await getDataSource('Universal Armor Ornaments', itemsToUrls, 10);
     await getDataSource('Shaders', shadersToUrls, 7);
     const fileContent = `
     export const itemsToUrls = ${JSON.stringify(Object.fromEntries(itemsToUrls), null, 4)};
